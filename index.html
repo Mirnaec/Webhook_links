@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             /* Colores de la marca Mirna */
             --brand-fuchsia: #e6005c;
             
-            /* Colores Glassmorphism (Más oscuros para mejor contraste) */
-            --glass-bg: rgba(0, 0, 0, 0.4); /* Contenedor principal más oscuro */
+            /* Colores Glassmorphism */
+            --glass-bg: rgba(0, 0, 0, 0.4); 
             --glass-border: rgba(255, 255, 255, 0.15);
             --text-color: #ffffff;
         }
@@ -27,7 +28,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Fondo dinámico por imagen Desktop por defecto */
         body {
             min-height: 100vh;
             display: flex;
@@ -41,14 +41,12 @@
             color: var(--text-color);
         }
 
-        /* Fondo dinámico para Móvil */
         @media (max-width: 768px) {
             body {
                 background-image: url('Recursos Gráficos/Fondo-Vertical.jpg');
             }
         }
 
-        /* Contenedor principal estilo Liquid Glass */
         .container {
             width: 100%;
             max-width: 480px;
@@ -63,7 +61,7 @@
             z-index: 10;
         }
 
-        /* ----- LOGO ----- */
+        /* LOGO */
         .main-logo {
             width: 220px;
             max-width: 80%;
@@ -73,96 +71,22 @@
             filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.6));
         }
 
-        /* ----- CARRUSEL ----- */
-        .carousel-section {
-            display: none; /* Se muestra por JS si hay banners */
-            margin-bottom: 25px;
-        }
-
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .carousel-track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -ms-overflow-style: none; 
-            scrollbar-width: none; 
-        }
-        
-        .carousel-track::-webkit-scrollbar {
-            display: none; 
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            scroll-snap-align: start;
-            position: relative;
-        }
-
-        .carousel-slide a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            aspect-ratio: 2/1; 
-        }
-
-        .carousel-hint {
-            text-align: center;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 8px;
-            font-weight: 400;
-        }
-
-        /* Botones de navegación del carrusel */
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.8);
-            color: var(--brand-fuchsia);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-        }
-        
-        .nav-btn:hover { 
-            background: #ffffff;
-            transform: translateY(-50%) scale(1.1);
-        }
+        /* --- ESTILOS DE CARRUSEL --- */
+        .carousel-section { display: none; margin-bottom: 25px; }
+        .carousel-wrapper { position: relative; width: 100%; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .carousel-slide { min-width: 100%; scroll-snap-align: start; position: relative; }
+        .carousel-slide a { display: block; width: 100%; height: 100%; text-decoration: none; cursor: pointer; }
+        .carousel-slide img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 2/1; }
+        .carousel-hint { text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 8px; font-weight: 400; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); color: var(--brand-fuchsia); border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.4); }
+        .nav-btn:hover { background: #ffffff; transform: translateY(-50%) scale(1.1); }
         .prev-btn { left: 10px; }
         .next-btn { right: 10px; }
+        @media (max-width: 768px) { .nav-btn { display: none; } }
 
-        @media (max-width: 768px) {
-            .nav-btn { display: none; } 
-        }
-
-        /* ----- BOTONES PRINCIPALES ----- */
+        /* --- BOTONES PRINCIPALES --- */
         .link-wrapper {
             width: 100%;
             margin-bottom: 16px;
@@ -171,14 +95,13 @@
         .link-btn {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Alineado a la izquierda */
-            gap: 15px; /* Espacio entre ícono y texto */
+            justify-content: flex-start;
+            gap: 15px;
             width: 100%;
             padding: 16px 22px;
-            background: rgba(255, 255, 255, 0.08); /* Fondo del botón */
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
-            
             color: #ffffff;
             font-weight: 800; 
             text-decoration: none;
@@ -190,101 +113,30 @@
             text-shadow: 0px 1px 3px rgba(0,0,0,0.5); 
         }
 
-        /* Ícono de la izquierda */
-        .link-btn > i:first-child {
-            color: var(--brand-fuchsia); 
-            font-size: 1.25rem;
-            width: 25px; /* Ancho fijo para alinear bien los textos verticalmente */
-            text-align: center;
-        }
+        .link-btn > i:first-child { color: var(--brand-fuchsia); font-size: 1.25rem; width: 25px; text-align: center; }
+        .link-btn > i.fa-chevron-down { color: #ffffff; font-size: 0.9rem; margin-left: auto; }
+        .link-btn:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); border-color: rgba(255, 255, 255, 0.4); }
+        .link-btn:active { transform: scale(0.97); }
 
-        /* Flecha de la derecha (Submenús) */
-        .link-btn > i.fa-chevron-down {
-            color: #ffffff;
-            font-size: 0.9rem;
-            margin-left: auto; /* Empuja la flecha al extremo derecho */
-        }
+        .ml-btn { background: rgba(255, 224, 0, 0.1); border-color: rgba(255, 224, 0, 0.3); }
+        .ml-btn > i:first-child { color: #ffd700; }
+        .ml-btn:hover { background: rgba(255, 224, 0, 0.2); border-color: rgba(255, 224, 0, 0.6); }
 
-        .link-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
+        .magic-btn { background: rgba(230, 0, 92, 0.15); border-color: rgba(230, 0, 92, 0.4); }
+        .magic-btn:hover { background: rgba(230, 0, 92, 0.25); border-color: var(--brand-fuchsia); box-shadow: 0 5px 15px rgba(230, 0, 92, 0.3); }
 
-        .link-btn:active {
-            transform: scale(0.97);
-        }
+        /* --- SUBMENÚS --- */
+        .submenu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: rgba(0, 0, 0, 0.3); border-radius: 15px; margin-top: 5px; }
+        .submenu.open { max-height: 500px; padding: 5px 0; border: 1px solid rgba(255,255,255,0.1); }
+        .sub-link { display: flex; align-items: center; padding: 14px 22px; color: #ffffff; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: background 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .sub-link:last-child { border-bottom: none; }
+        .sub-link:hover { background: rgba(255,255,255,0.08); padding-left: 28px; color: var(--brand-fuchsia); }
+        .sub-link i { margin-right: 15px; font-size: 1.1rem; width: 20px; text-align: center; }
 
-        /* Botón Mercado Libre */
-        .ml-btn {
-            background: rgba(255, 224, 0, 0.1);
-            border-color: rgba(255, 224, 0, 0.3);
+        @keyframes animateRipple {
+            0% { width: 0; height: 0; opacity: 0.5; }
+            100% { width: 400px; height: 400px; opacity: 0; }
         }
-        
-        .ml-btn > i:first-child {
-            color: #ffd700; 
-        }
-        
-        .ml-btn:hover {
-            background: rgba(255, 224, 0, 0.2);
-            border-color: rgba(255, 224, 0, 0.6);
-        }
-
-        /* Botón Mágico Dinámico */
-        .magic-btn {
-            background: rgba(230, 0, 92, 0.15); /* Tono fucsia de fondo */
-            border-color: rgba(230, 0, 92, 0.4);
-        }
-        
-        .magic-btn:hover {
-            background: rgba(230, 0, 92, 0.25);
-            border-color: var(--brand-fuchsia);
-            box-shadow: 0 5px 15px rgba(230, 0, 92, 0.3);
-        }
-
-        /* ----- SUBMENÚS ----- */
-        .submenu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            background: rgba(0, 0, 0, 0.3); /* Fondo submenú más oscuro */
-            border-radius: 15px;
-            margin-top: 5px;
-        }
-        
-        .submenu.open {
-            max-height: 500px;
-            padding: 5px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .sub-link {
-            display: flex;
-            align-items: center;
-            padding: 14px 22px;
-            color: #ffffff; 
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600; 
-            transition: background 0.2s;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .sub-link:last-child {
-            border-bottom: none;
-        }
-        .sub-link:hover {
-            background: rgba(255,255,255,0.08);
-            padding-left: 28px;
-            color: var(--brand-fuchsia);
-        }
-        .sub-link i {
-            margin-right: 15px;
-            font-size: 1.1rem;
-            width: 20px;
-            text-align: center;
-        }
-
     </style>
 </head>
 <body>
@@ -306,53 +158,53 @@
             <p class="carousel-hint">Dale clic al banner para revisar más información.</p>
         </div>
         
-        <!-- BOTONES ESTÁTICOS -->
-        <div class="link-wrapper">
-            <button class="link-btn" onclick="toggleMenu('menu-ubicacion')">
-                <i class="fa-solid fa-location-dot"></i> Ubicación de Agencias <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="submenu" id="menu-ubicacion">
-                <a href="https://maps.app.goo.gl/xCT6AjWg7Vf9e9iHA" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Matriz</a>
-                <!-- Botón de Ayacucho eliminado -->
-                <a href="https://maps.app.goo.gl/A5B6ntJZJvuSmDmLA" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Alborada</a>
-                <a href="https://maps.app.goo.gl/CND6tMnKsKD1fdqL8" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Mall el Fortín</a>
-                <a href="https://maps.app.goo.gl/8pSDj8TZ835sBioz7" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia California</a>
-                <a href="https://maps.app.goo.gl/D8iSQ7DPyjCcg5rz7" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Gran Outlet</a>
+        <!-- CONTENEDOR AGRUPADO PARA TODOS LOS BOTONES -->
+        <div id="links-container">
+            
+            <div class="link-wrapper" data-id="ubicacion">
+                <button class="link-btn" onclick="toggleMenu('menu-ubicacion')">
+                    <i class="fa-solid fa-location-dot"></i> Ubicación de Agencias <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="submenu" id="menu-ubicacion">
+                    <a href="https://maps.app.goo.gl/xCT6AjWg7Vf9e9iHA" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Matriz</a>
+                    <a href="https://maps.app.goo.gl/Df1HuZX2CWEZweL67" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Ayacucho</a>
+                    <a href="https://maps.app.goo.gl/A5B6ntJZJvuSmDmLA" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Alborada</a>
+                    <a href="https://maps.app.goo.gl/CND6tMnKsKD1fdqL8" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia Mall el Fortín</a>
+                    <a href="https://maps.app.goo.gl/8pSDj8TZ835sBioz7" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Agencia California</a>
+                    <a href="https://maps.app.goo.gl/D8iSQ7DPyjCcg5rz7" target="_blank" class="sub-link"><i class="fa-solid fa-map-pin"></i> Gran Outlet</a>
+                </div>
             </div>
-        </div>
 
-        <div class="link-wrapper">
-            <a href="https://wa.me/593939379227" target="_blank" class="link-btn">
-                <i class="fa-brands fa-whatsapp"></i> Ventas y Asistencia
-            </a>
-        </div>
-
-        <div class="link-wrapper">
-            <button class="link-btn" onclick="toggleMenu('menu-redes')">
-                <i class="fa-solid fa-thumbs-up"></i> Nuestras Redes Sociales <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="submenu" id="menu-redes">
-                <a href="https://www.instagram.com/almacenesmirna/" target="_blank" class="sub-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://www.tiktok.com/@almacenesmirna.ec" target="_blank" class="sub-link"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-                <a href="https://www.facebook.com/almacenesmirna" target="_blank" class="sub-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <div class="link-wrapper" data-id="ventas">
+                <a href="https://wa.me/593939379227" target="_blank" class="link-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Ventas y Asistencia
+                </a>
             </div>
-        </div>
 
-        <div class="link-wrapper">
-            <a href="https://www.almacenesmirna.com.ec/" target="_blank" class="link-btn">
-                <i class="fa-solid fa-globe"></i> Visita nuestra Web
-            </a>
-        </div>
+            <div class="link-wrapper" data-id="redes">
+                <button class="link-btn" onclick="toggleMenu('menu-redes')">
+                    <i class="fa-solid fa-thumbs-up"></i> Nuestras Redes Sociales <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="submenu" id="menu-redes">
+                    <a href="https://www.instagram.com/almacenesmirna/" target="_blank" class="sub-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="https://www.tiktok.com/@almacenesmirna.ec" target="_blank" class="sub-link"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+                    <a href="https://www.facebook.com/almacenesmirna" target="_blank" class="sub-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                </div>
+            </div>
 
-        <div class="link-wrapper">
-            <a href="https://tienda.mercadolibre.com.ec/almacenes-mirna" target="_blank" class="link-btn ml-btn">
-                <i class="fa-solid fa-handshake"></i> Compra por Mercado Libre
-            </a>
-        </div>
+            <div class="link-wrapper" data-id="web">
+                <a href="https://www.almacenesmirna.com.ec/" target="_blank" class="link-btn">
+                    <i class="fa-solid fa-globe"></i> Visita nuestra Web
+                </a>
+            </div>
 
-        <!-- CONTENEDOR PARA EL BOTÓN MÁGICO DINÁMICO -->
-        <div id="dynamic-buttons-container">
-            <!-- Los botones extra de la hoja de cálculo se inyectarán aquí -->
+            <div class="link-wrapper" data-id="mercadolibre">
+                <a href="https://tienda.mercadolibre.com.ec/almacenes-mirna" target="_blank" class="link-btn ml-btn">
+                    <i class="fa-solid fa-handshake"></i> Compra por Mercado Libre
+                </a>
+            </div>
+
+            <!-- Los botones mágicos dinámicos de Sheets también se inyectarán dentro de este contenedor -->
         </div>
 
     </div>
@@ -367,61 +219,64 @@
             menu.classList.toggle('open');
         }
 
-        // --- 2. LECTURA DE GOOGLE SHEETS (CARRUSEL Y BOTÓN MÁGICO) ---
-        const googleSheetCSVUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTdWWnx0hulqzaoFG7601i6k_9dIrTkINeJ5g7ofkDPKKzfVmFX6DVc2RwrY3CPx-CSy3tzmMON8eVP/pub?gid=0&single=true&output=csv'; 
+        // --- 2. URLS DE TUS HOJAS DE CÁLCULO ---
+        // Tu hoja actual con el contenido (Carrusel y Botones mágicos)
+        const googleSheetDataUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTdWWnx0hulqzaoFG7601i6k_9dIrTkINeJ5g7ofkDPKKzfVmFX6DVc2RwrY3CPx-CSy3tzmMON8eVP/pub?gid=0&single=true&output=csv'; 
+        
+        // Tu NUEVA hoja con el Orden de los botones
+        const googleSheetOrdenUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTdWWnx0hulqzaoFG7601i6k_9dIrTkINeJ5g7ofkDPKKzfVmFX6DVc2RwrY3CPx-CSy3tzmMON8eVP/pub?gid=1627002415&single=true&output=csv'; 
 
         async function fetchGoogleData() {
             try {
-                const response = await fetch(googleSheetCSVUrl);
-                const data = await response.text();
-                const rows = data.split('\n').slice(1); 
+                // --- A. PRIMERO CARGAMOS LOS DATOS Y CREAMOS LOS BOTONES DINÁMICOS ---
+                const responseData = await fetch(googleSheetDataUrl);
+                const textData = await responseData.text();
+                const rowsData = textData.split('\n').slice(1); 
                 
                 const track = document.getElementById('carouselTrack');
                 const carouselSection = document.getElementById('carouselSection');
-                const dynamicBtnContainer = document.getElementById('dynamic-buttons-container');
+                const linksContainer = document.getElementById('links-container'); 
                 
                 let hasImages = false;
+                let btnCounter = 1; 
 
-                rows.forEach(row => {
-                    // Ignoramos líneas vacías
+                rowsData.forEach(row => {
                     if(!row.trim()) return;
-
                     const cols = row.split(',');
                     if(cols.length < 2) return;
 
                     const idType = cols[0].trim().replace(/^"|"$/g, ''); 
-                    const contentValue = cols[1].trim().replace(/^"|"$/g, ''); // Link(carrusel) o Nombre(botón)
+                    const contentValue = cols[1].trim().replace(/^"|"$/g, ''); 
                     const redirectUrl = cols.length >= 4 ? cols[3].trim().replace(/^"|"$/g, '') : '';
 
-                    // PROCESAR CARRUSEL
+                    // Carrusel
                     if(idType.toLowerCase() === 'carrusel' && contentValue.startsWith('http')) {
                         hasImages = true;
                         const slide = document.createElement('div');
                         slide.className = 'carousel-slide';
-                        
                         let slideHTML = `<img src="${contentValue}" alt="Banner Promocional">`;
                         if (redirectUrl && redirectUrl.startsWith('http')) {
                             slideHTML = `<a href="${redirectUrl}" target="_blank">${slideHTML}</a>`;
                         }
-                        
                         slide.innerHTML = slideHTML;
                         track.appendChild(slide);
                     }
                     
-                    // PROCESAR BOTÓN MÁGICO (Botón único)
+                    // Botón Mágico Dinámico
                     if(idType.toLowerCase() === 'botón único' || idType.toLowerCase() === 'boton unico') {
                         if(contentValue && redirectUrl.startsWith('http')) {
                             const newWrapper = document.createElement('div');
                             newWrapper.className = 'link-wrapper';
+                            // Asignamos el ID dinámico: dinamico-1, dinamico-2, etc.
+                            newWrapper.setAttribute('data-id', 'dinamico-' + btnCounter); 
+                            btnCounter++;
                             
                             newWrapper.innerHTML = `
                                 <a href="${redirectUrl}" target="_blank" class="link-btn magic-btn">
                                     <i class="fa-solid fa-star"></i> ${contentValue}
                                 </a>
                             `;
-                            dynamicBtnContainer.appendChild(newWrapper);
-                            
-                            // Agrega el evento ripple al nuevo botón
+                            linksContainer.appendChild(newWrapper);
                             addRippleEffect(newWrapper.querySelector('.link-btn'));
                         }
                     }
@@ -432,50 +287,49 @@
                     setupCarouselControls(track);
                 }
 
+                // --- B. LUEGO CARGAMOS EL ORDEN Y REORGANIZAMOS LOS BOTONES ---
+                const responseOrden = await fetch(googleSheetOrdenUrl);
+                const textOrden = await responseOrden.text();
+                // Omitimos la fila de encabezados
+                const rowsOrden = textOrden.split('\n').slice(1); 
+                
+                rowsOrden.forEach(row => {
+                    if(!row.trim()) return;
+                    const cols = row.split(',');
+                    // Tomamos el valor de la Columna A y limpiamos comillas por si acaso
+                    const idBotonDeseado = cols[0].trim().replace(/^"|"$/g, ''); 
+                    
+                    // Buscamos si ese botón existe en el HTML
+                    const elemento = document.querySelector(`[data-id="${idBotonDeseado}"]`);
+                    if(elemento) {
+                        // Lo mandamos al final de la lista. 
+                        // Como esto se ejecuta fila por fila de arriba a abajo, 
+                        // el orden final queda idéntico al de tu Sheet.
+                        linksContainer.appendChild(elemento);
+                    }
+                });
+
             } catch (error) {
-                console.error('Error al cargar datos del CSV:', error);
+                console.error('Error al cargar datos desde Google Sheets:', error);
             }
         }
 
+        // --- CONTROLES CARRUSEL ---
         function setupCarouselControls(track) {
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            
-            const goNext = () => {
-                if(track.scrollLeft + track.clientWidth >= track.scrollWidth - 5) {
-                    track.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
-                }
-            };
-
-            const goPrev = () => {
-                if(track.scrollLeft <= 0) {
-                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
-                } else {
-                    track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
-                }
-            };
-
+            const goNext = () => { track.scrollLeft + track.clientWidth >= track.scrollWidth - 5 ? track.scrollTo({ left: 0, behavior: 'smooth' }) : track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); };
+            const goPrev = () => { track.scrollLeft <= 0 ? track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' }) : track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }); };
             nextBtn.addEventListener('click', goNext);
             prevBtn.addEventListener('click', goPrev);
-
             let autoLoop = setInterval(goNext, 4000);
-
             track.addEventListener('touchstart', () => clearInterval(autoLoop));
             track.addEventListener('mouseenter', () => clearInterval(autoLoop));
-            
-            track.addEventListener('touchend', () => {
-                clearInterval(autoLoop);
-                autoLoop = setInterval(goNext, 4000);
-            });
-            track.addEventListener('mouseleave', () => {
-                clearInterval(autoLoop);
-                autoLoop = setInterval(goNext, 4000);
-            });
+            track.addEventListener('touchend', () => { clearInterval(autoLoop); autoLoop = setInterval(goNext, 4000); });
+            track.addEventListener('mouseleave', () => { clearInterval(autoLoop); autoLoop = setInterval(goNext, 4000); });
         }
 
-        // --- 3. EFECTO RIPPLE ---
+        // --- EFECTO RIPPLE ---
         function addRippleEffect(element) {
             element.addEventListener('mousedown', function(e) {
                 let ripple = document.createElement('span');
@@ -487,27 +341,17 @@
                 ripple.style.height = '100px';
                 ripple.style.transform = 'translate(-50%, -50%)';
                 ripple.style.animation = 'animateRipple 0.6s linear';
-                
                 let rect = this.getBoundingClientRect();
                 ripple.style.left = `${e.clientX - rect.left}px`;
                 ripple.style.top = `${e.clientY - rect.top}px`;
-                
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
             });
         }
-
-        // Aplica el efecto a los botones estáticos al iniciar
         document.querySelectorAll('.link-btn').forEach(btn => addRippleEffect(btn));
 
-        // Iniciar la carga de datos
+        // Iniciar la carga
         fetchGoogleData();
     </script>
-    <style>
-        @keyframes animateRipple {
-            0% { width: 0; height: 0; opacity: 0.5; }
-            100% { width: 400px; height: 400px; opacity: 0; }
-        }
-    </style>
 </body>
 </html>
